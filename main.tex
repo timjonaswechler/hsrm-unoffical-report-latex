@@ -1,36 +1,91 @@
 \documentclass[thesis]{.src/hsrmreport}
-% Allgemeine Informationen des Dokuments
-% \Fachbereich{}
-% \Studiengang{}
-% \Studienrichtung{}
-\Dokumentenart{Praktikumsbericht}
+    % Allgemeine Informationen des Dokuments
+        % \Fachbereich{}
+        % \Studiengang{}
+        % \Studienrichtung{}
+        \Dokumentenart{Praktikumsbericht}
 
-% Informationen für eine Ausarbeitung / Gruppenarbeit 
-\Kurs{Gerätekonstruktion}
-\Studierende{Ein Mensch mit vielen Namen}{000010}
-\Studierende{Tim-Jonas Wechler}{111111}
+    % Informationen für eine Ausarbeitung / Gruppenarbeit 
+        \Kurs{Gerätekonstruktion}
+        \Studierende{Ein Mensch mit vielen Namen}{000010}
+        \Studierende{Tim-Jonas Wechler}{111111}
 
-% Informationen für einen Thesis oder Praktikumsbericht
-\Autor{Tim-Jonas Wechler}{<Mat.Nr.>}
-\Strasse{Hier-und-jetzt Straße 55}
-\PLZ{12345}
-\Wohnort{Traumschloss}
+    % Informationen für einen Thesis oder Praktikumsbericht
+        \Autor{Tim-Jonas Wechler}{<Mat.Nr.>}
+        \Strasse{Hier-und-jetzt Straße 55}
+        \PLZ{12345}
+        \Wohnort{Traumschloss}
 
-\Beteiligte{Referent}{Prof. Dr. von Zuhause}
-\Beteiligte{Koreferent}{Prof. Dr. von Zuhause II}
-\Beteiligte{Betreuer}{Prof. Dr. von Zuhause III}
+        \Beteiligte{Referent}{Prof. Dr. von Zuhause}
+        \Beteiligte{Koreferent}{Prof. Dr. von Zuhause II}
+        \Beteiligte{Betreuer}{Prof. Dr. von Zuhause III}
 
-\Unternehmen{aaa GmbH}
+        \Unternehmen{aaa GmbH}
 
 
-
+\addbibresource{bib/bib-refs.bib}
 
 \begin{document}
     % Deckblatt
         \Deckblatt{Test}
         \todo{Paket https://ftp.fau.de/ctan/macros/latex/contrib/todonotes/todonotes.pdf einfügen}
-        \input{content/frontmatter/eigenstaendigkeitserklaerung.tex}
-        \input{content/frontmatter/sperrvermerk.tex}
-        \input{content/frontmatter/abstract.tex}
 
+    % Eigenständigkeitserklärung
+        % \input{content/frontmatter/eigenstaendigkeitserklaerung.tex}
+    
+    % Sperrvermerk
+        % \input{content/frontmatter/sperrvermerk.tex}
+
+    % Abstrakt    
+        % \input{content/frontmatter/abstract.tex}
+
+    % Inhaltsverzeichnis
+        \begingroup		
+            \pagestyle{plain}
+            \tableofcontents
+            \cleardoublepage
+        \endgroup
+        \newpage
+
+    % Normale Seitenzahlen    
+        \pagenumbering{arabic}
+    % Das Seitenlayout mit Kapitel und Unterkapitel im Header jeder Seite des Berichts
+        \pagestyle{scrheadings}
+        
+        \cite{kaufteil}
+        \cite{quelle}
+    
+
+    % Literaturverzeichnis:
+    % Listet alle verwendeten Quellen auf, einschließlich 
+    %       wissenschaftlicher Artikel, Bücher, Dissertationen, etc.
+        \input{content/appendix/bibliography.tex} 
+
+    % Abbildungsverzeichnis
+        \begingroup		
+            \pagestyle{plain}
+            \listoffigures
+            \cleardoublepage
+        \endgroup
+            
+    % Tabellenverzeichnis
+        \begingroup		
+            \pagestyle{plain}
+            \listoftables
+            \cleardoublepage
+        \endgroup
+                
+    % Codeverzeichnis
+        \begingroup		
+            \pagestyle{plain}
+            \lstlistoflistings
+            \cleardoublepage
+        \endgroup
+
+    \appendix
+        % - Vollständiger Satz der Zeichnungen
+        % - Datenblätter verwendeter Norm- und Zukaufteile
+        % - Datenblätter verwendeter Werkstoffe
+        % - weitere Informationen      
+        
 \end{document}

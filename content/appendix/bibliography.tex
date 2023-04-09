@@ -1,0 +1,36 @@
+% WICHTIGER HINWEIS: 
+% wenn man ein Quellenverzeichnis in seinem Dokument mit einbinden möchte so muss 
+% die Routine mit der das Dokument erstellt wird angepasst werden. 
+% Bei der Verwendung dieser Dokumentenklasse:
+%  - pdflatex
+%  - biber
+%  - pdflatex
+%  - pdflatex
+
+
+% Möchte man nur ein einfaches Quellenverzeichnis realisieren, dann geht das mit folgendem Befehl
+\printbibliography
+
+% Es gibt auch die Möglichkeit ein Quellenverzeichnis auf zu teilen.
+
+% Im folgenden wird ein Quellenverzeichnis was unterteilt einem in Quellen für Kaufteile und Quellen der Recherche erstellt.
+% Für dieses Beispiel wird mit dem keyword = "Kaufteile" eine Auswahl getroffen.
+% Wenn der Eintrag in der bib-Datei dieses keyword besitzt wird dieser dem Quellenverzeichnis für Kaufteile aufgelistet. 
+% Besitzt er dieses keyword nicht taucht der Eintrag in dem anderen Quellenverzeichnis auf.
+%   @entry{label,
+%     author = {},
+%     title  = {},
+%     keywords = {Kaufteile}
+
+\printbibheading
+\printbibliography[
+    keyword=Kaufteile,
+    heading=subbibliography,%
+    title={Quellen der Kaufteile},
+]
+\printbibliography[
+    notkeyword=Kaufteile,
+    heading=subbibliography,%
+    title={Quellen der Recherche},
+]
+
