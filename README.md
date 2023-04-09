@@ -1,28 +1,22 @@
-<div style="
-text-align: center;
-background: repeating-linear-gradient(35deg,rgba(255,180,0,0.5),rgba(255,180,0,0.5) 20px,rgba(180,180,180,1) 10px,rgba(180,180,180,1) 40px);">
-    <h2 style="font-weight: 700;color:black">🚧👨‍💻🔬 Work in Progress 🔬👩‍💻🚧</h2>
-</div>
+# hsrm-unoffical-report-latex
+🚧👨‍💻🔬 **Work in Progress** 🔬👩‍💻🚧
+
 In diesem Repository wird eine Latex-Dokumentenklasse erstellt, zusammen mit einer Ordnerstruktur die für eine Erstellung eines professionellen Berichts gedacht ist. 
-
-
-
 
 # Inhaltsverzeichnis
 
-* [🗄 Packet Manager](#🗄-packet-manager)
+* [🗄 Paket Manager](#-paket-manager)
     * [MikTeX](#miktex)
     * [TeXLive](#texlive)
     * [MacTeX](#mactex-texlive)
-* [📟 Editoren](#📟-editoren)
+* [📟 Editoren](#-editoren)
     * [TeXStudio](#texstudio)
     * [Overleaf](#overleaf)
     * [Visual Studio Code](#visual-studio-code)
-* [Verwendung](#🔜-verwendung)
-* [Anpassung](#🔜-anpassung)
-* [🚨 Disclaimer](#🚨-disclaimer)
+* [Verwendung](#-verwendung)
+* [Anpassungen](#-anpassungen)
+* [🚨 Disclaimer](#-disclaimer)
 # Voraussetzung
-<div style="display: flex; justify-content: space-between;"><div style="width: 45%;">
 
 ## 🗄 Paket Manager
 
@@ -38,9 +32,6 @@ In diesem Repository wird eine Latex-Dokumentenklasse erstellt, zusammen mit ein
  - **Betriebssystem**: MacOS
  - **Download-Link**:   https://www.tug.org/mactex/mactex-download.html 
 
-</div>
-<div style="width: 45%;">
-
 ## 📟 Editoren
 
 ### [TeXStudio](https://www.texstudio.org/)
@@ -54,8 +45,7 @@ In diesem Repository wird eine Latex-Dokumentenklasse erstellt, zusammen mit ein
 ### [Visual Studio Code](https://code.visualstudio.com/)
 - **Betriebssystem**: Windows / MacOS / Linux
 - **Download-Link**:   https://code.visualstudio.com/Download
-  </div>
-</div>
+
 
 # Installation:
 Klonen das Repository:
