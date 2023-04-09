@@ -3,6 +3,7 @@
 
 In diesem Repository wird eine Latex-Dokumentenklasse erstellt, zusammen mit einer Ordnerstruktur die für eine Erstellung eines professionellen Berichts gedacht ist. 
 
+Die Dokuemtenklasse wird mit LaTeX2e erstellt.
 # Inhaltsverzeichnis
 
 * [🗄 Paket Manager](#-paket-manager)
