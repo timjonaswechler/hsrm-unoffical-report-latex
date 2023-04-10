@@ -25,6 +25,26 @@
 
 \addbibresource{bib/bib-refs.bib}
 
+\GlsXtrLoadResources[
+    src={./bib/glossar},
+    save-locations=false,
+    % section=chapter,
+    field-aliases={
+        unit=symbol,
+        formula=name,
+        mathname=description,
+        identifier=category,
+    },
+    entry-type-aliases={
+        unit=symbol,
+        math=symbol,
+        abkuerzung=abbreviation
+    },
+    symbol-sort-fallback={name},
+    type={same as category},
+    set-widest
+]
+
 \begin{document}
     % Deckblatt
         \Deckblatt{Test}
@@ -38,6 +58,9 @@
 
     % Abstrakt    
         % \input{content/frontmatter/abstract.tex}
+    
+    % Verzeichnisse
+        % \input{content/frontmatter/glossar.tex}
 
     % Inhaltsverzeichnis
         \begingroup		
@@ -49,38 +72,39 @@
 
     % Normale Seitenzahlen    
         \pagenumbering{arabic}
+
     % Das Seitenlayout mit Kapitel und Unterkapitel im Header jeder Seite des Berichts
         \pagestyle{scrheadings}
         
         \cite{kaufteil}
         \cite{quelle}
-    
+        
 
     % Literaturverzeichnis:
     % Listet alle verwendeten Quellen auf, einschließlich 
     %       wissenschaftlicher Artikel, Bücher, Dissertationen, etc.
-        \input{content/appendix/bibliography.tex} 
+        % \input{content/appendix/bibliography.tex} 
 
     % Abbildungsverzeichnis
-        \begingroup		
-            \pagestyle{plain}
-            \listoffigures
-            \cleardoublepage
-        \endgroup
+        % \begingroup		
+        %     \pagestyle{plain}
+        %     \listoffigures
+        %     \cleardoublepage
+        % \endgroup
             
     % Tabellenverzeichnis
-        \begingroup		
-            \pagestyle{plain}
-            \listoftables
-            \cleardoublepage
-        \endgroup
+        % \begingroup		
+        %     \pagestyle{plain}
+        %     \listoftables
+        %     \cleardoublepage
+        % \endgroup
                 
     % Codeverzeichnis
-        \begingroup		
-            \pagestyle{plain}
-            \lstlistoflistings
-            \cleardoublepage
-        \endgroup
+        % \begingroup		
+        %     \pagestyle{plain}
+        %     \lstlistoflistings
+        %     \cleardoublepage
+        % \endgroup
 
     \appendix
         % - Vollständiger Satz der Zeichnungen
