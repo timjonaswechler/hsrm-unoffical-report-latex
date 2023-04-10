@@ -1,0 +1,33 @@
+% WICHTIGER HINWEIS: 
+% wenn man ein Abkürzungsverzeichnis oder wie in diesem Beispiel mehrere in seinem Dokument mit einbinden möchte so muss 
+% die Routine mit der das Dokument erstellt wird angepasst werden. 
+% Bei der Verwendung dieser Dokumentenklasse:
+%  - pdflatex
+%  - bib2gls
+%  - pdflatex
+%  - pdflatex
+
+% Dem Befehl bib2gls muss das Argument --group noch hinzugefügt werden. 
+
+
+\chapter*{Begriffsverzeichnis}
+\pdfbookmark[0]{Begriffsverzeichnis}{Begriffsverzeichnis}
+
+\pdfbookmark[1]{Abkürzungsverzeichnis}{Abkürzungsverzeichnis}
+\printunsrtglossary[type=abkuerz,style=index]
+
+\pdfbookmark[1]{Begriffserklärung}{Begriffserklärung}
+\printunsrtglossary[type=erklaer,style=altlist]
+
+
+\chapter*{Verwendete Symbole}
+\pdfbookmark[0]{Verwendete Symbole}{Verwendete Symbole}
+\printunsrtglossary[type=math,style=mcolalttree]
+{%
+    \renewcommand*{\glstreenamefmt}[1]{#1}%
+    \renewcommand*{\glstreegroupheaderfmt}[1]{\textbf{#1}}%
+}
+\pdfbookmark[1]{Mathematische Symbole}{Mathematische Symbole}
+
+\printunsrtglossary[type=units,style=units]
+\pdfbookmark[1]{Physikalsiche Größen}{Physikalsiche Größen}

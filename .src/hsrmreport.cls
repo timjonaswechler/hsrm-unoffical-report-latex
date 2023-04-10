@@ -788,7 +788,7 @@
 	% Gloassraies
 		\RequirePackage[record,% use bib2gls
 			section,% use \section* for glossary headings
-			postdot,% insert dot after descriptions in glossaries
+			% postdot,% insert dot after descriptions in glossaries
 			nomain,% don't create 'main' glossary
 			nostyles,% don't load default styles
 			% load and patch required style packages:
@@ -804,22 +804,22 @@
 		% define custom glossary style
 		\newglossarystyle{units}% style name
 		{% base it on long3col-booktabs
-		\setglossarystyle{long3col-booktabs}%
-		\renewcommand*{\glossaryheader}{%
-			\toprule 
-			\bfseries Name &
-			\bfseries Bezeichnung &
-			\bfseries Einheit
-			\tabularnewline\midrule\endhead
-			\bottomrule\endfoot}%
-		% main entries:
-		\renewcommand{\glossentry}[2]{%
-			\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}} &
-			\glossentrydesc{##1}\glspostdescription &
-			\glossentrysymbol{##1}\tabularnewline
-		}%
+			\setglossarystyle{long3col-booktabs}%
+			\renewcommand*{\glossaryheader}{%
+				\toprule 
+				\bfseries Name &
+				\bfseries Bezeichnung &
+				\bfseries Einheit
+				\tabularnewline\midrule\endhead
+				\bottomrule\endfoot}%
+			% main entries:
+			\renewcommand{\glossentry}[2]{%
+				\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}} &
+				\glossentrydesc{##1}\glspostdescription &
+				\glossentrysymbol{##1}\tabularnewline
+			}%
 		}
-
+	%
 	% **************************************************
 	% New Commands
 	% **************************************************
