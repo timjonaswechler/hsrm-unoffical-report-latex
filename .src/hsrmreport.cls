@@ -820,14 +820,16 @@
 			}%
 		}
 	%
+	% ToDo-List 
+		\RequirePackage{soul} % for the command \hl
+		\RequirePackage[colorinlistoftodos]{todonotes}
+			\todostyle{warning}{linecolor=Prim, backgroundcolor=Prim!20,
+			bordercolor=Prim,shadow}
+			\todostyle{info}{linecolor=Sec3, backgroundcolor=Sec3!20,
+			bordercolor=Sec3}
 	% **************************************************
 	% New Commands
 	% **************************************************
-		% TODO command
-		\definecolor{color_todo}{rgb}{.6,.8,.2}
-		\newcommand{\todo}[1]{{\color{color_todo}\textbf{[TODO #1]}}}
-		%
-		%
 		% ref commands, e.g. for images, tables and text labels
 		% ----------------------------------------------
 		% RESULT = (siehe Tab. 12.4)
