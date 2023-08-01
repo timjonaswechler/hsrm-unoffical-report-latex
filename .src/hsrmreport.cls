@@ -38,8 +38,6 @@
 			% 		[para name](string) path 		> default = .
 			% 		[para name](bool) thesis 		> default = false
 			% 		[para name](bool) section 		> default = false
-			% 		[para name](bool) sperrvermerk 	> default = false
-			% 		[para name](bool) eigenstaendigkeit > default = true
 			% 		[para name](bool) banner 		> default = true
 			% 		[para name](bool) backgroundlogo > default = true
 			% 		[para name](bool) coloredheadline > default = false
@@ -64,8 +62,6 @@
 			%						z.B. towside
 			% 		[section] 		Schält die Nummerierung um. Es werden die Kapitelnummern ignoriert.
 			%						Anwendung wenn, ein kleines Dokument erstellt wird, in dem nicht viele Kapitel sind oder diese nicht sonderlich groß sind.
-			% 		[sperrvermerk] 	
-			% 		[eigenstaendigkeit] 
 			% 		[banner] 		
 			% 		[backgroundlogo] 
 			% 		[coloredheadline]
@@ -107,16 +103,6 @@
 				% --> Werte = true|false
 				\define@boolkey[rep]{hsrm}{section}[true]{}
 				\setkeys[rep]{hsrm}{section=false}
-
-				% OPTION thesis -> short report	
-				% --> Werte = true|false
-				\define@boolkey[rep]{hsrm}{sperrvermerk}[true]{}
-				\setkeys[rep]{hsrm}{sperrvermerk=true}
-
-				% OPTION eigenstaendigkeit -> short report	
-				% --> Werte = true|false
-				\define@boolkey[rep]{hsrm}{eigenstaendigkeit}[true]{}
-				\setkeys[rep]{hsrm}{eigenstaendigkeit=false}
 			%
 			% ------------------------------------------
 			% Darstellung
@@ -196,13 +182,6 @@
 				\define@key[rep]{hsrm}{bibstyle}[alphabetic]{\def\hsrm@bibstyle{#1}}
 				\setkeys[rep]{hsrm}{bibstyle=numeric-comp}
 			%
-			% ------------------------------------------
-			% Sonstiges
-			% ------------------------------------------				
-				\define@boolkey[rep]{hsrm}{emoji}[true]{}
-				\setkeys[rep]{hsrm}{emoji=false}
-			%
-
 			% Verarbeitung der nicht zuweisbaren Optionen
 			\DeclareOptionX*{
 				\PackageWarning{hsrmreport}{Unknown option ‘\CurrentOption’}%
@@ -302,16 +281,14 @@
 			\RequirePackage[ngerman]{babel}				% Eine Sammlung von verschieden Sprachen, und ermöglicht für diese Sprachen die automatische Worttrennung und die ändert die Bezeichnungen in die jeweilige Sprache. 
 														% [para name] ngerman: Worttrennung nach der neuen Rechtschreibung und deutsche Bezeichnungen. 
 			\RequirePackage{datetime}					%
-			\RequirePackage[ngerman]{varioref}			% Sorgt für intelligente Querverweise (http://texdoc.net/texmf-dist/doc/latex/tools/varioref.pdf)
+%			\RequirePackage[ngerman]{varioref}			% Sorgt für intelligente Querverweise (http://texdoc.net/texmf-dist/doc/latex/tools/varioref.pdf)
 														% [para name] ngerman: neue deutsche Rechtschreibung 
 			\RequirePackage[setspace=false]{scrhack}					%
-			\RequirePackage{cancel}						% Text durchstreichen 
-			\RequirePackage{ulem}						% Text durchstreichen
-			\RequirePackage[right]{eurosym} 			% Ermöglicht das nutzen von \EUR{-Betrag-} (http://www.theiling.de/eurosym.html)
+%			\RequirePackage[right]{eurosym} 			% Ermöglicht das nutzen von \EUR{-Betrag-} (http://www.theiling.de/eurosym.html)
 														% [para name] right: Positionierung des Eurosymbol rechts des Betrags 
 
 			\RequirePackage{blindtext}					% Platzhalter Text (https://ctan.mc1.root.project-creative.net/macros/latex/contrib/blindtext/blindtext.pdf)
-			\RequirePackage{textcomp}					%
+			\RequirePackage{textcomp}					% Weitere Symbole werden ermöglicht (https://www.ctan.org/pkg/textcomp)
 
 			\RequirePackage{setspace}					% Ermöglicht es den Zeilenabstand anzupassen
 			\RequirePackage[							% (https://www.namsu.de/Extra/pakete/Siunitx.html)
@@ -319,10 +296,6 @@
 				%per-mode=symbol
 				per-mode = fraction						% [para name] per-mode:
 			]{siunitx} 	
-			\RequirePackage[							% advanced quotes (https://ctan.net/macros/latex/contrib/csquotes/csquotes.pdf)
-				strict=true,							% 	- warning are errors now
-				style=german							% 	- german quotes
-			]{csquotes}
 			\RequirePackage[all]{nowidow}				% Unterdrückt fast komplett nach einem Seitenumbruch einzelne Zeilen. 
 			\RequirePackage{etoc}
 			% \RequirePackage{parskip}
@@ -420,10 +393,6 @@
 							BoldFont=*-SemiBold,
 							BoldItalicFont=*-SemiBoldItalic,
 						]%
-					\fi
-					
-					\ifrep@hsrm@georgia
-						\setmainfont{Georgia}
 					\fi
 				\fi
 			%
@@ -572,9 +541,6 @@
 			captionskip=3pt								%
 		]{subfig}										%
 		\RequirePackage{svg}							%
-		\ifrep@hsrm@lua									%
-			\RequirePackage{emoji}						%
-		\fi												%
 	%
 	% **************************************************
 	% Tabellen
@@ -634,19 +600,7 @@
 		\RequirePackage{bookmark}						%
 		\RequirePackage{makeidx}						% Anlegen eines Stichwortverzeichnis.
 		\RequirePackage{parallel}						% Ermöglicht Text in mehreren Spalten nebeneinander zu stellen (https://texfaq.org/FAQ-parallel)
-		% \RequirePackage[								%
-		% 	nonumberlist, 								% keine Seitenzahlen anzeigen
-		% 	acronym,      								% ein Abkürzungsverzeichnis erstellen
-		% 	toc,          								% Einträge im Inhaltsverzeichnis
-		% 	section      								% im Inhaltsverzeichnis auf section-Ebene erscheinen
-		% ]{glossaries}									%
-		% \RequirePackage[								%
-		% 	record,										%
-		% 	stylemods,									%
-		% 	style=listgroup								%
-		% ]{glossaries-extra}								%
-		% \RequirePackage{tablefootnote}				% Für Fußnoten (http://vesta.informatik.rwth-aachen.de/ftp/pub/mirror/ctan/macros/latex/contrib/tablefootnote/tablefootnote.pdf)
-		
+		%	
 		% **********************************************
 		% Weitere Einstellungen für den Seitenaufbau
 		% **********************************************
@@ -874,12 +828,6 @@
 		% RESULT = (siehe Seite 12)
 		\newcommand{\seepage}[1]{(siehe Seite~\pageref{#1})}
 		\newcommand{\spage}[1]{(Seite~\pageref{#1})}
-	
-		% \renewcommand{\tt}[1]{\texttt{\color{red}{#1}}}
-	
-		% \renewcommand{\bf}[1]{\textbf{#1}}
-		
-	
 	%
 	% **************************************************
 	% Titelseite
