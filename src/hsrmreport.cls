@@ -16,7 +16,7 @@
 	  draft=false,            							% value for draft version
 	  numbers=noenddot
 	]{scrreprt}
-	\ProvidesClass{.src/hsrmreport}[2022/05/25 Klassen fuer die Erstellung von Berichten an der Hochschule RheinMain]
+	\ProvidesClass{src/hsrmreport}[2022/05/25 Klassen fuer die Erstellung von Berichten an der Hochschule RheinMain]
 
 	% **************************************************
 	% Optionen  (https://www.namsu.de/Extra/latex-pakete.html)
@@ -194,13 +194,13 @@
 			% ------------------------------------------
 			
 				% Prüft ob das Hochschul Logo vorhanden ist
-				\IfFileExists{\hsrm@path/.src/logo/banner.svg}{}{\PackageError{hsrm}{Es war mir nicht die Datei "banner.svg" im Ordner "asset/logo" zu finden! Bitte stell sicher, dass der Ordner "asset/logo" im aktuellen Projekt zu finden ist. Du kannst aus einem älternen Projekt diese Datei oder auch Ordner kopieren.}{Falls denoch Probleme auftauchen melde dich bei: timjonas.wechler@student.hs-rm.de}}
+				%\IfFileExists{\hsrm@path/src/logo/banner.svg}{}{\PackageError{hsrm}{Es war mir nicht die Datei "banner.svg" im Ordner "asset/logo" zu finden! Bitte stell sicher, dass der Ordner "asset/logo" im aktuellen Projekt zu finden ist. Du kannst aus einem älternen Projekt diese Datei oder auch Ordner kopieren.}{Falls denoch Probleme auftauchen melde dich bei: timjonas.wechler@student.hs-rm.de}}
 				
 				% Prüft ob das Hochschul Logo vorhanden ist
-				\IfFileExists{\hsrm@path/.src/logo/banner.png}{}{\PackageError{hsrm}{Es war mir nicht die Datei "banner.svg" im Ordner "asset/logo" zu finden! Bitte stell sicher, dass der Ordner "asset/logo" im aktuellen Projekt zu finden ist. Du kannst aus einem älternen Projekt diese Datei oder auch Ordner kopieren.}{Falls denoch Probleme auftauchen melde dich bei: timjonas.wechler@student.hs-rm.de}}
+				\IfFileExists{\hsrm@path/src/logo/banner.png}{}{\PackageError{hsrm}{Es war mir nicht die Datei "banner.svg" im Ordner "asset/logo" zu finden! Bitte stell sicher, dass der Ordner "asset/logo" im aktuellen Projekt zu finden ist. Du kannst aus einem älternen Projekt diese Datei oder auch Ordner kopieren.}{Falls denoch Probleme auftauchen melde dich bei: timjonas.wechler@student.hs-rm.de}}
 
 				% Prüft ob Hintergrund vorhanden ist 
-				\IfFileExists{\hsrm@path/.src/logo/background.pdf}{}{\PackageError{hsrm}{Es war mir nicht die Datei "background.pdf" im Ordner "asset/logo" zu finden! Bitte stell sicher, dass der Ordner "asset/logo" im aktuellen Projekt zu finden ist. Du kannst aus einem älternen Projekt diese Datei oder auch Ordner kopieren.}{Falls denoch Probleme auftauchen melde dich bei: timjonas.wechler@student.hs-rm.de}}
+				\IfFileExists{\hsrm@path/src/logo/background.pdf}{}{\PackageError{hsrm}{Es war mir nicht die Datei "background.pdf" im Ordner "asset/logo" zu finden! Bitte stell sicher, dass der Ordner "asset/logo" im aktuellen Projekt zu finden ist. Du kannst aus einem älternen Projekt diese Datei oder auch Ordner kopieren.}{Falls denoch Probleme auftauchen melde dich bei: timjonas.wechler@student.hs-rm.de}}
 			%
 		%
 	%
@@ -559,7 +559,8 @@
 	% **************************************************
 		\RequirePackage{enumitem}						% for simple list modifications
 		\RequirePackage[german,intoc]{nomentbl} 		% vier Spalten bei Formelzeichenverzeichnis (http://vesta.informatik.rwth-aachen.de/ftp/pub/mirror/ctan/macros/latex/contrib/nomentbl/nomentbl.pdf)		
-		\RequirePackage{listings}						%
+		\RequirePackage{listings}
+								
 		\renewcommand{\lstlistingname}{Code}			% Listing -> Code
 		\renewcommand{\lstlistlistingname}{Codeverzeichnis}% List of Listings -> Codeverzeichnis
 		%				
@@ -731,6 +732,8 @@
 			url=true,
 			doi=true,				% prints doi
 			natbib=true,			% if you need natbib functions
+			defernumbers=true
+			% heading=bibintoc,     % Bibliography as numbered chapter
 		]{biblatex}
 		\DefineBibliographyStrings{ngerman}{%
 			bibliography  = {Quellenverzeichnis},
@@ -738,6 +741,14 @@
 			backrefpage = {{zitiert auf Seite}},%
 			backrefpages = {{zitiert auf den Seiten}},%
 		}
+		
+		\renewcommand\listoffigures{%
+			\section{\listfigurename}% Used to be \section*{\listfigurename}
+			\@mkboth{\MakeUppercase\listfigurename}%
+					{\MakeUppercase\listfigurename}%
+			\@starttoc{lof}%
+			}
+		
 	%
 	% Gloassraies
 		\RequirePackage[record,% use bib2gls
@@ -1039,17 +1050,17 @@
 					\ifrep@hsrm@banner
 						\ifrep@hsrm@svg
 							\begin{tikzpicture}[remember picture,overlay,every node/.style={inner sep=0,outer sep=0}]
-								\node (back names) [shape=rectangle, minimum height=50mm, minimum width=\paperwidth, anchor=north west] at (current page.north west) {\includesvg[width=\paperwidth]{\hsrm@path/.src/logo/banner}};
+								\node (back names) [shape=rectangle, minimum height=50mm, minimum width=\paperwidth, anchor=north west] at (current page.north west) {\includesvg[width=\paperwidth]{\hsrm@path/src/logo/banner}};
 							\end{tikzpicture}
 						\else
 							\begin{tikzpicture}[remember picture,overlay,every node/.style={inner sep=0,outer sep=0}]
-								\node (back names) [shape=rectangle, minimum height=50mm, minimum width=\paperwidth, anchor=north west] at (current page.north west) {\includegraphics[width=\paperwidth]{\hsrm@path/.src/logo/banner.png}};
+								\node (back names) [shape=rectangle, minimum height=50mm, minimum width=\paperwidth, anchor=north west] at (current page.north west) {\includegraphics[width=\paperwidth]{\hsrm@path/src/logo/banner.png}};
 							\end{tikzpicture}
 						\fi
 					\fi
 					\ifrep@hsrm@backgroundlogo
 						\begin{tikzpicture}[remember picture,overlay,every node/.style={inner sep=0,outer sep=0}]
-							\node (back names) [shape=rectangle, minimum height=50mm, minimum width=0.5\paperwidth, anchor=south east] at (current page.south east) {\includegraphics[width=0.5\paperwidth]{\hsrm@path/.src/logo/background.pdf}};
+							\node (back names) [shape=rectangle, minimum height=50mm, minimum width=0.5\paperwidth, anchor=south east] at (current page.south east) {\includegraphics[width=0.5\paperwidth]{\hsrm@path/src/logo/background.pdf}};
 						\end{tikzpicture}
 					\fi
 					
@@ -1066,8 +1077,10 @@
 					\text{Studiengang \insertStudiengang} \\
 					\text{Studienrichtung \insertStudienrichtung} \\ [35mm]
 
-					\text{\large \insertDokumentenart} \\[5mm]
-					\text{\LARGE \textbf{#1}}\par\smallskip
+					\text{\large \insertDokumentenart} \par\smallskip\renewcommand{\baselinestretch}{1.5}\selectfont
+					{\huge \bfseries #1 }\par\smallskip
+					\renewcommand{\baselinestretch}{1}
+					\selectfont
 					\text{\large \textbf{\insertKurs}}\par\medskip
 					\ifrep@hsrm@thesis\else
 						{\insertVersuchsdurchfuehrungDatum}
@@ -1078,8 +1091,8 @@
 						% Angaben zu den Autoren des Dokuments 
 						\begin{tabular}[\textwidth]{rl}
 							vorgelegt von 	& \Autoranzeigen \\
-											& \Strasseanzeigen\\
-											& \PLZanzeigen \Wohnortanzeigen\\
+											% & \Strasseanzeigen\\
+											% & \PLZanzeigen \Wohnortanzeigen\\
 											& \\
 							\alleBeteiligteanzeigen
 						\end{tabular} \\[10mm]
