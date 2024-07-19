@@ -1,5 +1,10 @@
+% Die Option 'thesis' ist für eine Abschlussarbeit (Bachelor, Master, Diplom) zu verwenden.
+% Wird die Option 'thesis' nicht gesetzt, wird ein Bericht erstellt, für Projektarbeiten oder Praktikaberichte.
+
 \documentclass[thesis]{src/hsrmreport}
     % Allgemeine Informationen des Dokuments
+    % Bist du an einem anderen Fachbereich, Studiengang oder Studienrichtung?
+    % Dann kommentiere die Zeilen aus und trage die Informationen ein.    
         % \Fachbereich{}
         % \Studiengang{}
         % \Studienrichtung{}
@@ -7,6 +12,8 @@
 
     % Informationen für eine Ausarbeitung / Gruppenarbeit 
         \Kurs{Die künsterlische Vielfalt}
+    % Füge hier die Namen der Studierenden ein und deren Matrikelnummer
+    % Du kannst so viele Studierende eintragen wie du möchtest
         \Studierende{Ein Mensch mit vielen Namen}{000010}
         \Studierende{Meiner Wenigkeit}{111111}
 
@@ -22,9 +29,12 @@
 
         \Unternehmen{TraumJOB GmbH}
 
-
+% Ich war so frei und habe hier einen Bibliographie- und Glossar-Import hinzugefügt
+% Wenn du das nicht brauchst, dann kommentiere die Zeilen aus.
 \addbibresource{bib/bib-refs.bib}
 
+% Der unterteilt sich in unterschiedliche Abschnitte. 
+% Für mehr Informationen, schau dir die Datei /bib/glossar.bib an, dort findest du ein paar Beispiele.
 \GlsXtrLoadResources[
     src={./bib/glossar},
     save-locations=false,
@@ -48,16 +58,31 @@
 \begin{document}
     % Deckblatt
         \Deckblatt{Test}
-        % \listoftodos
+    % Unabhängig von derm Option 'thesis' in der Dokumentenklasse, musst du falls du eine Abschlussarbeit schreibst, eine Selbstständigkeitserklärung und gegebenenfalls einen Sperrvermerk einfügen.
+    % Ich habe dir hier ein Beispiel für eine Selbstständigkeitserklärung und einen Sperrvermerk hinzugefügt.
+    % Als hinweis, die Selbstständigkeitserklärung ist in meinem Studiengang das Standardformat. 
+    % BITTE ÜBERPRÜFE OB DAS FÜR DEINEM STUDIENGANG PASST.
+    
     % Eigenständigkeitserklärung
         \input{content/frontmatter/eigenstaendigkeitserklaerung.tex}
     
     % Sperrvermerk
         \input{content/frontmatter/sperrvermerk.tex}
 
+    % Möchtest du ein Abstract einfügen dann hab ich dir auch dafür ein Beispiel hinzugefügt.
     % Abstrakt    
         \input{content/frontmatter/abstract.tex}
     
+    % ZUrück zum Glossar, das ist echt nicht ganz einfach. ;) 
+    % Möchtest du das diesen dargestellt wird, dann kommentiere die Zeile aus.
+    % Möchtest du eine andere Aufteilung oder so dann kanns du diese Datei gerne anpassen.
+    % Momentan wird das Glossar in folgenden Kateogrien unterteilt:
+    % - Begriffsverzeichnis
+    %   - Abkürzungsverzeichnis
+    %   - Begriffserklärung
+    % - Verwendete Symbole
+    %   - Mathematische Symbole
+    %   - Physikalische Symbole
     % Verzeichnisse
         % \input{content/frontmatter/glossar.tex}
 
@@ -74,8 +99,14 @@
 
     % Das Seitenlayout mit Kapitel und Unterkapitel im Header jeder Seite des Berichts
         \pagestyle{scrheadings}
-       
+    
+    % YEAH! Hier geht es los mit dem eigentlichen Inhalt deiner Arbeit.
 
+
+       
+    % Ach Schade, du bist ja schon am Ende.
+    % Falls du noch Listen und Quellenverzeichnisse hast, dann kannst du diese hier einfügen, ansonsten kommentiere die Zeilen aus.
+    % Falls von dir einen anderen Aufbau erwünscht wird, dann kannst du auch die Listen und Quellenverzeichnisse an die gewünschte Stelle verschieben.
     % Literaturverzeichnis:
     % Listet alle verwendeten Quellen auf, einschließlich 
     %       wissenschaftlicher Artikel, Bücher, Dissertationen, etc.
@@ -101,7 +132,8 @@
         %     \lstlistoflistings
         %     \cleardoublepage
         % \endgroup
-
+    % Ach ja, fast vergessen, der Anhang. 
+    % Falls du etwas hast was du anhängen möchtest, dann kannst du das hier einfügen.
     \appendix
         % - Vollständiger Satz der Zeichnungen
         % - Datenblätter verwendeter Norm- und Zukaufteile
